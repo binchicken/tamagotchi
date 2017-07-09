@@ -4,3 +4,15 @@ body {
     font-family: 'Roboto Mono', monospace;
     margin: 5em
 }
+
+h1 {
+    margin-bottom: 1.5em;
+}
+
+/* media queries */
+
+@media only screen and (max-width: 760px) {
+    body {
+        font-size: 2em;
+    }
+}

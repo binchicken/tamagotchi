@@ -7,6 +7,10 @@
   <title>Tamagotchi</title>
   <meta name="description" content="Tamagotchi">
     
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="css/stylesheet.css">
 
@@ -23,22 +27,26 @@
   
 var notStarving = true;
     // starves when hunger goes from 4 to 0
-var currentHunger = 4;
+var currentHunger = 5;
 var increment = 1;
 var isStarving = 0;
+    
+var threeHearts = '&#x2665;&#x2665;&#x2665;&#x2661;';
 
 
-function PerformCalc() {
+function hungerCalc() {
 
 //hunger value depletes from full (4) to 0  
 if (notStarving == true && currentHunger >= isStarving) {
   currentHunger -= increment
-
+ 
+    
   //if reaches 0
   if (currentHunger == isStarving) {
       notStarving = false;
-        currentHunger = 'Dead';}
+      currentHunger = 'Dead';}
 }
+     
 
 // resets?
 else {
@@ -47,12 +55,20 @@ else {
 //update value
 document.getElementById('demo').innerHTML = 'Hunger Level: ' + currentHunger + '<br />';
 }
-setInterval(PerformCalc, 3000); 
+    
+setInterval(hungerCalc, 1500); 
+    
+function updateValues() {
+    var str = document.getElementById('demo').innerHTML; 
+    var txt = str.replace('four','three');
+    document.getElementById("demo").innerHTML = txt;
+}    
     
 </script>
     
 </body>
 </html>
+
 
 <!--
     
