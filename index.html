@@ -6,8 +6,9 @@
 
   <title>Tamagotchi</title>
   <meta name="description" content="Tamagotchi">
-
-  <link rel="stylesheet" href="css/stylesheet.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -15,49 +16,95 @@
 </head>
 
 <body>
-<h1>A Web Page</h1>
-<p id="demo">A Paragraph</p>
-<button type="button" onclick="myFunction()">Try it</button>
-    
-    
+<h1>tamagotchi demo</h1>    
+<div id="demo">Hunger Level: 4</div>
 
 <script>
-function myFunction() {
-   document.getElementById("demo").innerHTML = "Paragraph changed.";
+  
+var notStarving = true;
+    // starves when hunger goes from 4 to 0
+var currentHunger = 4;
+var increment = 1;
+var isStarving = 0;
+
+
+function PerformCalc() {
+
+//hunger value depletes from full (4) to 0  
+if (notStarving == true && currentHunger >= isStarving) {
+  currentHunger -= increment
+
+  //if reaches 0
+  if (currentHunger == isStarving) {
+      notStarving = false;
+        currentHunger = 'Dead';}
+}
+
+// resets?
+else {
+}
+
+//update value
+document.getElementById('demo').innerHTML = 'Hunger Level: ' + currentHunger + '<br />';
+}
+setInterval(PerformCalc, 3000); 
     
-    var slaying = true;
+</script>
+    
+</body>
+</html>
+
+<!--
+    
+var slaying = true;
 //50% chance of hit (0 or 1 aka false or true)
 var youHit = Math.floor(Math.random() * 2)
 //sets to number between 1-5
 var damageThisRound = Math.floor(Math.random()*5 + 1)
 var totalDamage = 0;
 
-while(slaying) { 
+while(slaying) {
     //determining if hit
     if (youHit) {
         console.log("You hit!");
-       
+
         totalDamage += damageThisRound;
-       
+
         //if damage is greater than 4
         if (totalDamage >= 4) {
             console.log("You slew the dragon!")
-            //end loop   
+            //end loop
             slaying = false;
             }
-        //if damage is not greater than 4   
+        //if damage is not greater than 4
             else {
                 youHit = Math.floor(Math.random() * 2)
                 }
     }
-   
+
     else {
         console.log("You missed!");
-        //end loop   
+        //end loop
         slaying = false;
         }
  }
-}
-</script>
-</body>
-</html>
+    
+
+    
+    
+    
+var x = document.getElementById('search'),
+    // dictionary of all the languages
+    lan = ['Search',  'Suchen', 'other'],
+    // hold the spot in the dictionary
+    i = 1;  
+
+setInterval(function (){
+  // change the text using the dictionary
+  // i++ go to the next language
+  x.innerHTML = lan[i++];
+  // start over if i === dictionary length
+  i = lan.length === i ? 0 : i;
+}, 2000);
+
+-->
