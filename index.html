@@ -23,6 +23,9 @@
 <h1>tamagotchi demo</h1>    
 <div id="hunger"><span class="label">HUNGER</span><br>&#x2665;&#x2665;&#x2665;&#x2665;<br></div>
 <div id="happy"><span class="label">HAPPY</span><br>&#x2665;&#x2665;&#x2665;&#x2665;<br></div>
+    
+<div id="state"><span class="label">STATE</span><br>Alive</div>
+    
 <p id="reset"><a href=".">> Reset</a></p>
 
 <script>
@@ -46,10 +49,16 @@ var displayHappy = '&#x2665;&#x2665;&#x2665;&#x2665;';
 var threeHearts = '&#x2665;&#x2665;&#x2665;&#x2661;';    
 var twoHearts = '&#x2665;&#x2665;&#x2661;&#x2661;';  
 var oneHeart = '&#x2665;&#x2661;&#x2661;&#x2661;';    
-var zeroHearts = '&#x2661;&#x2661;&#x2661;&#x2661;';   
-    
+var zeroHearts = '&#x2661;&#x2661;&#x2661;&#x2661;';  
  
-
+//update state if alive/dead   
+var displayState = 'Alive';    
+    
+function updateState() {
+    displayState = 'Dead';
+    document.getElementById('state').innerHTML = '<span class="label">STATE</span>' + '<br>' + displayState + '<br>';
+}   
+    
 //hunger ===================================================================================================
 var hungerTimer = 0;
     
@@ -57,7 +66,7 @@ var hungerTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
 if (currentHunger >= 0) {
-  currentHunger--
+  currentHunger--;
   
     //if reaches 3
   if (currentHunger === 4) {
@@ -79,14 +88,14 @@ if (currentHunger >= 0) {
     
     //if reaches starving
   if (currentHunger === 0) {
-      displayHunger = 'Dead';
+      updateState();
       clearInterval(hungerTimer);}
     }
      
 
 //update value
 document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
-}, 1700);
+}, 1500);
     
 //happy ===================================================================================================
 var happyTimer = 0;
@@ -95,7 +104,7 @@ var happyTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
 if (currentHappy >= 0) {
-  currentHappy--
+  currentHappy--;
   
     //if reaches 3
   if (currentHappy === 4) {
@@ -117,18 +126,17 @@ if (currentHappy >= 0) {
     
     //if reaches starving
   if (currentHappy === 0) {
-      displayHappy = 'Dead';
+      updateState();
       clearInterval(happyTimer);}
     }
 
 
 //update value
 document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';
-}, 1900);
-  
+}, 1700);
+
     
-    
-</script>
+</script>   
     
 </body>
 </html>
