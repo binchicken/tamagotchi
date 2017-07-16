@@ -26,7 +26,8 @@
 <p id="reset"><a href=".">> Reset</a></p>
 
 <script>
-  
+
+//*maybe not be necessary    
 var notStarving = true;
 var notSad = true;
     
@@ -55,7 +56,7 @@ var hungerTimer = 0;
 var hungerTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
-if (notStarving && currentHunger >= isStarving) {
+if (currentHunger >= 0) {
   currentHunger--
   
     //if reaches 3
@@ -77,8 +78,7 @@ if (notStarving && currentHunger >= isStarving) {
  
     
     //if reaches starving
-  if (currentHunger == isStarving) {
-      notStarving = false;
+  if (currentHunger === 0) {
       displayHunger = 'Dead';
       clearInterval(hungerTimer);}
     }
@@ -86,7 +86,7 @@ if (notStarving && currentHunger >= isStarving) {
 
 //update value
 document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
-}, 1500);
+}, 1700);
     
 //happy ===================================================================================================
 var happyTimer = 0;
@@ -94,7 +94,7 @@ var happyTimer = 0;
 var happyTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
-if (notSad && currentHappy >= isSad) {
+if (currentHappy >= 0) {
   currentHappy--
   
     //if reaches 3
@@ -116,8 +116,7 @@ if (notSad && currentHappy >= isSad) {
  
     
     //if reaches starving
-  if (currentHappy == isSad) {
-      notSad = false;
+  if (currentHappy === 0) {
       displayHappy = 'Dead';
       clearInterval(happyTimer);}
     }
@@ -125,8 +124,9 @@ if (notSad && currentHappy >= isSad) {
 
 //update value
 document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';
-}, 1700);
+}, 1900);
   
+    
     
 </script>
     
