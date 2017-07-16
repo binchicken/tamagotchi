@@ -5,8 +5,22 @@ body {
     margin: 5em
 }
 
+a {
+    text-decoration: none;
+    color: #fff
+}
+
 h1 {
     margin-bottom: 1.5em;
+}
+
+#hunger {
+    height:5em;
+}
+
+#reset {
+    margin-top: 4em;
+    font-size: 0.75em
 }
 
 /* media queries */

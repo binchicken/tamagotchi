@@ -21,7 +21,8 @@
 
 <body>
 <h1>tamagotchi demo</h1>    
-<div id="demo">Hunger Level: &#x2665;&#x2665;&#x2665;&#x2665;</div>
+<div id="hunger">Hunger Level: &#x2665;&#x2665;&#x2665;&#x2665;</div>
+<p id="reset"><a href=".">> Reset</a></p>
 
 <script>
   
@@ -33,7 +34,8 @@ var isStarving = 0;
 
 //start with 4 hearts    
 var displayHunger = '&#x2665;&#x2665;&#x2665;&#x2665;';
-//other hunger states    
+    
+//other states    
 var threeHearts = '&#x2665;&#x2665;&#x2665;&#x2661;';    
 var twoHearts = '&#x2665;&#x2665;&#x2661;&#x2661;';  
 var oneHeart = '&#x2665;&#x2661;&#x2661;&#x2661;';    
@@ -76,7 +78,7 @@ else {
 }
 
 //update value
-document.getElementById('demo').innerHTML = 'Hunger Level: ' + displayHunger + '<br />';
+document.getElementById('hunger').innerHTML = 'Hunger Level: ' + displayHunger + '<br />';
 }
     
 setInterval(hungerCalc, 1500);   
