@@ -1,5 +1,6 @@
 body {
     background-color: #000;
+    font-size: 14px;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
     margin: 5em
@@ -14,8 +15,13 @@ h1 {
     margin-bottom: 1.5em;
 }
 
-#hunger {
-    height:5em;
+.label {
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+}
+
+#hunger, #happy {
+    height:4em;
 }
 
 #reset {
