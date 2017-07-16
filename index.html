@@ -26,7 +26,8 @@
     
 <div id="state"><span class="label">STATE</span><br>Alive</div>
     
-<p id="reset"><a href=".">> Reset</a></p>
+<button id="feed" class="action">> Feed</button>    
+<p id="reset" class="action"><a href=".">> Reset</a></p>
 
 <script>
 
@@ -46,10 +47,17 @@ var displayHunger = '&#x2665;&#x2665;&#x2665;&#x2665;';
 var displayHappy = '&#x2665;&#x2665;&#x2665;&#x2665;';
     
 //other states    
+var fourHearts = '&#x2665;&#x2665;&#x2665;&#x2665;';    
 var threeHearts = '&#x2665;&#x2665;&#x2665;&#x2661;';    
 var twoHearts = '&#x2665;&#x2665;&#x2661;&#x2661;';  
 var oneHeart = '&#x2665;&#x2661;&#x2661;&#x2661;';    
-var zeroHearts = '&#x2661;&#x2661;&#x2661;&#x2661;';  
+var zeroHearts = '&#x2661;&#x2661;&#x2661;&#x2661;'; 
+    
+var feed = document.getElementById('feed');
+    
+feed.addEventListener('click', function () {
+    currentHunger += 2;
+});     
  
 //update state if alive/dead   
 var displayState = 'Alive';    
@@ -57,7 +65,8 @@ var displayState = 'Alive';
 function updateState() {
     displayState = 'Dead';
     document.getElementById('state').innerHTML = '<span class="label">STATE</span>' + '<br>' + displayState + '<br>';
-}   
+}  
+        
     
 //hunger ===================================================================================================
 var hungerTimer = 0;
@@ -67,7 +76,11 @@ var hungerTimer = setInterval(function happyCalc() {
 //happy value depletes from full (5) to sad  
 if (currentHunger >= 0) {
   currentHunger--;
-  
+    
+    //if reaches 4
+  if (currentHunger === 5) {
+      displayHunger = fourHearts;
+  }     
     //if reaches 3
   if (currentHunger === 4) {
       displayHunger = threeHearts;
@@ -126,7 +139,7 @@ if (currentHappy >= 0) {
     
     //if reaches starving
   if (currentHappy === 0) {
-      updateState();
+      //updateState();
       clearInterval(happyTimer);}
     }
 
@@ -134,7 +147,8 @@ if (currentHappy >= 0) {
 //update value
 document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';
 }, 1700);
-
+    
+ 
     
 </script>   
     
