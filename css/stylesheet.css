@@ -2,8 +2,20 @@ body {
     background-color: #000;
     font-size: 14px;
     color: #fff;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Hiragino Sans';
     margin: 5em
+}
+
+a, h1, .label, .action, #state {
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace
+}
+
+.arrow { display: none;}
+
+#arrow {
+  content: '\u2665';
+  display: inline;
+  text-decoration: none;
 }
 
 a {
@@ -13,6 +25,16 @@ a {
 
 h1 {
     margin-bottom: 1.5em;
+}
+.heart {
+    padding-right: 3px;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 .label {
@@ -39,6 +61,17 @@ button {
      padding:0!important;
      font: inherit;
      cursor: pointer;
+}
+
+/* ==== experimental =================================== */
+
+.threehearts::before {
+    background-image: url(/img/heart-full.svg), url(/img/heart-full.svg), url(/img/heart-full.svg);
+    background-size: 14px 12px, 14px 12px, 14px 12px;
+    display: inline-block;
+    width: 14px; 
+    height: 12px;
+    content:"";
 }
 
 
