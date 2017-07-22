@@ -24,9 +24,9 @@
 <body>
 <div class="container">    
 <h1>tamagotchi demo</h1>    
-    <div id="hunger"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+    <div id="hunger"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
     
-    <div id="happy"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+    <div id="happy"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
 
     <div id="state"><span class="label">STATE</span><br>Alive</div>
 
@@ -35,10 +35,6 @@
 </div>
 
 <script>
-
-//*maybe not be necessary    
-var notStarving = true;
-var notSad = true;
     
 // starves when hunger goes from 5 to 0
 var currentHunger = 5;
@@ -49,13 +45,13 @@ var isSad = 0;
 
 //start with 4 hearts    
 var displayHunger = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
-var displayHappy = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
+var displayHappy = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
     
 //other states    
-var fourHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';  
-var threeHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';
-var twoHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';  
-var oneHeart = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';   var zeroHearts = '<img src="img/heart-empty.svg" width="13 px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />'; 
+var fourHearts = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';  
+var threeHearts = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';
+var twoHearts = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';  
+var oneHeart = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';   var zeroHearts = '<img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />'; 
     
 var feed = document.getElementById('feed');
     

@@ -1,58 +1,32 @@
+/* === set up ============================================= */
+
 body {
     background-color: #000;
     font-size: 14px;
     color: #fff;
-    font-family: 'Hiragino Sans';
 }
+img {
+    padding-right: 0.1em;
+    padding-top: 0.25em;
+}
+
+
+/* === typography ============================================= */
 
 a, h1, .label, .action, #state {
     font-family: 'Roboto Mono', 'Courier New', Courier, monospace
 }
-
-.arrow { display: none;}
-
-#arrow {
-  content: '\u2665';
-  display: inline;
-  text-decoration: none;
-}
-img {
-    padding-right: 0.1em;
+h1 {
+    margin-bottom: 1.5em;
 }
 a {
     text-decoration: none;
     color: #fff
 }
 
-h1 {
-    margin-bottom: 1.5em;
-}
-.heart {
-    padding-right: 3px;
-    image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: pixelated;
-    image-rendering: optimize-contrast;
-    -ms-interpolation-mode: nearest-neighbor;
-}
 
-.label {
-    font-size: 0.8em;
-    letter-spacing: 0.1em;
-}
-.action {
-    font-size: 0.75em
-}
 
-#hunger, #happy {
-    height:4em;
-}
-
-#feed {
-  margin-top: 4em;  
-}
+/* === actions ================================================ */
 
 button {
      background:none!important;
@@ -63,17 +37,37 @@ button {
      font: inherit;
      cursor: pointer;
 }
+.action {
+    font-size: 0.75em
+}
+.label {
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+}
+#hunger, #happy {
+    height:4em;
+}
+#feed {
+    margin-top: 4em;  
+}
+
+
+/* === classic mode ==================================== */
+
+.heart-px {
+    padding-right: 3px;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
 
 /* ==== experimental =================================== */
 
-.threehearts::before {
-    background-image: url(/img/heart-full.svg), url(/img/heart-full.svg), url(/img/heart-full.svg);
-    background-size: 14px 12px, 14px 12px, 14px 12px;
-    display: inline-block;
-    width: 14px; 
-    height: 12px;
-    content:"";
-}
 
 
 /* media queries */
