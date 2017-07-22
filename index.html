@@ -6,6 +6,7 @@
 
   <title>Tamagotchi</title>
   <meta name="description" content="Tamagotchi">
+<meta name="viewport" content="width=device-width, initial-scale=0.5">    
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -21,14 +22,17 @@
 </head>
 
 <body>
+<div class="container">    
 <h1>tamagotchi demo</h1>    
-<div id="hunger"><span class="label">HUNGER</span><br>&#x2665;&#x2665;&#x2665;&#x2665;<br></div>
-<div id="happy"><span class="label">HAPPY</span><br>&#x2665;&#x2665;&#x2665;&#x2665;<br></div>
+    <div id="hunger"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
     
-<div id="state"><span class="label">STATE</span><br>Alive</div>
-    
-<button id="feed" class="action">> Feed</button>    
-<p id="reset" class="action"><a href=".">> Reset</a></p>
+    <div id="happy"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+
+    <div id="state"><span class="label">STATE</span><br>Alive</div>
+
+    <button id="feed" class="action">> Feed</button>    
+    <p id="reset" class="action"><a href=".">> Reset</a></p>
+</div>
 
 <script>
 
@@ -44,15 +48,14 @@ var currentHappy = 5;
 var isSad = 0;
 
 //start with 4 hearts    
-var displayHunger = '&#x2665;&#x2665;&#x2665;&#x2665;';
-var displayHappy = '&#x2665;&#x2665;&#x2665;&#x2665;';
+var displayHunger = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
+var displayHappy = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
     
 //other states    
-var fourHearts = '&#x2665;&#x2665;&#x2665;&#x2665;';  
-var threeHearts = '<img src="img/heart-full.svg" width="14px" height="12px" /><img src="img/heart-full.svg" width="14px" height="12px" /><img src="img/heart-full.svg" width="14px" height="12px" /><img src="img/heart-empty.svg" width="14px" height="12px" />';
-var twoHearts = '&#x2665;&#x2665;&#x2661;&#x2661;';  
-var oneHeart = '&#x2665;&#x2661;&#x2661;&#x2661;';    
-var zeroHearts = '&#x2661;&#x2661;&#x2661;&#x2661;'; 
+var fourHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';  
+var threeHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';
+var twoHearts = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';  
+var oneHeart = '<img src="img/heart-full.svg" width="13 px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';   var zeroHearts = '<img src="img/heart-empty.svg" width="13 px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />'; 
     
 var feed = document.getElementById('feed');
     

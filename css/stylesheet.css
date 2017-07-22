@@ -3,7 +3,6 @@ body {
     font-size: 14px;
     color: #fff;
     font-family: 'Hiragino Sans';
-    margin: 5em
 }
 
 a, h1, .label, .action, #state {
@@ -17,7 +16,9 @@ a, h1, .label, .action, #state {
   display: inline;
   text-decoration: none;
 }
-
+img {
+    padding-right: 0.1em;
+}
 a {
     text-decoration: none;
     color: #fff
@@ -79,6 +80,15 @@ button {
 
 @media only screen and (max-width: 760px) {
     body {
-        font-size: 2em;
+        /*font-size: 2em;*/
+    }
+    .container {
+        width: 100vw;
+        height:100vh;
+        margin: 5em;
+        overflow: hidden
+    }
+    img {
+    padding-right: 0.25em;
     }
 }
