@@ -44,7 +44,8 @@ button {
      cursor: pointer;
 }
 .action {
-    font-size: 0.75em
+    font-size: 0.75em;
+    margin-bottom: 1em
 }
 .label {
     font-size: 0.8em;
@@ -55,6 +56,10 @@ button {
 }
 #feed {
     margin-top: 4em;  
+}
+#play {
+    margin-top: 1em;
+    margin-bottom: 2em;
 }
 
 

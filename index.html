@@ -30,7 +30,8 @@
 
     <div id="state"><span class="label">STATE</span><br>Alive</div>
 
-    <button id="feed" class="action">> Feed</button>    
+    <button id="feed" class="action">> Feed</button><br>    
+    <button id="play" class="action">> Play</button>    
     <p id="reset" class="action"><a href=".">> Reset</a></p>
 </div>
 
@@ -54,9 +55,13 @@ var twoHearts = '<img src="img/heart-full.svg" width="13px" height="13px" /><img
 var oneHeart = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />';   var zeroHearts = '<img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />'; 
     
 var feed = document.getElementById('feed');
+var play = document.getElementById('play');
     
 feed.addEventListener('click', function () {
     currentHunger += 2;
+}); 
+play.addEventListener('click', function () {
+    currentHappy += 2;
 });     
  
 //update state if alive/dead   
@@ -100,15 +105,16 @@ if (currentHunger >= 0) {
  
     
     //if reaches starving
-  if (currentHunger === 0) {
+  if (currentHunger === 0 && currentHappy === 0) {
       updateState();
-      clearInterval(hungerTimer);}
+      clearInterval(hungerTimer);
+      clearInterval(happyTimer);}
     }
      
 
 //update value
 document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
-}, 1500);
+}, 3000);
     
 //happy ===================================================================================================
 var happyTimer = 0;
@@ -138,15 +144,15 @@ if (currentHappy >= 0) {
  
     
     //if reaches starving
-  if (currentHappy === 0) {
+  //if (currentHappy === 0) {
       //updateState();
-      clearInterval(happyTimer);}
+      //clearInterval(happyTimer);}
     }
 
 
 //update value
 document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';
-}, 1700);
+}, 2800);
     
  
     
