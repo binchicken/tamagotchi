@@ -59,6 +59,8 @@ var play = document.getElementById('play');
     
 feed.addEventListener('click', function () {
     currentHunger += 2;
+    updateHunger();
+    console.log('click');
 }); 
 play.addEventListener('click', function () {
     currentHappy += 2;
@@ -71,6 +73,14 @@ function updateState() {
     displayState = 'Dead';
     document.getElementById('state').innerHTML = '<span class="label">STATE</span>' + '<br>' + displayState + '<br>';
 }  
+
+//update values when interacted with
+function updateHunger() {
+    document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
+    console.log('update');}
+    
+function updateHappy() {
+    document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}    
         
     
 //hunger ===================================================================================================
@@ -81,38 +91,41 @@ var hungerTimer = setInterval(function happyCalc() {
 //happy value depletes from full (5) to sad  
 if (currentHunger >= 0) {
   currentHunger--;
+    updateHunger();
     
     //if reaches 4
   if (currentHunger === 5) {
       displayHunger = fourHearts;
+      updateHunger();
   }     
     //if reaches 3
-  if (currentHunger === 4) {
+  else if (currentHunger === 4) {
       displayHunger = threeHearts;
+      updateHunger();
   }  
     //if reaches 2
-  if (currentHunger === 3) {
+  else if (currentHunger === 3) {
       displayHunger = twoHearts;
+      updateHunger();
   }    
     //if reaches 1
-  if (currentHunger === 2) {
+  else if (currentHunger === 2) {
       displayHunger = oneHeart;
+      updateHunger();
   }    
     //if reaches 0
-  if (currentHunger === 1) {
+  else if (currentHunger === 1) {
       displayHunger = zeroHearts;
+      updateHunger();
   }
- 
     
     //if reaches starving
-  if (currentHunger === 0 && currentHappy === 0) {
+  else if (currentHunger === 0 && currentHappy === 0) {
       updateState();
       clearInterval(hungerTimer);}
     }
      
-
-//update value
-document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
+    
 }, 3000);
     
 //happy ===================================================================================================
@@ -123,33 +136,34 @@ var happyTimer = setInterval(function happyCalc() {
 //happy value depletes from full (5) to sad  
 if (currentHappy >= 0) {
   currentHappy--;
+  updateHappy();
   
     //if reaches 3
   if (currentHappy === 4) {
       displayHappy = threeHearts;
+      updateHappy();
   }  
     //if reaches 2
   if (currentHappy === 3) {
       displayHappy = twoHearts;
+      updateHappy();
   }    
     //if reaches 1
   if (currentHappy === 2) {
       displayHappy = oneHeart;
+      updateHappy();
   }    
     //if reaches 0
   if (currentHappy === 1) {
       displayHappy = zeroHearts;
+      updateHappy();
   }
- 
     
     //if reaches starving
   if (currentHappy === 0) {
       clearInterval(happyTimer);}
     }
-
-
-//update value
-document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';
+    
 }, 2800);
     
  
