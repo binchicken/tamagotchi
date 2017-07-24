@@ -107,8 +107,7 @@ if (currentHunger >= 0) {
     //if reaches starving
   if (currentHunger === 0 && currentHappy === 0) {
       updateState();
-      clearInterval(hungerTimer);
-      clearInterval(happyTimer);}
+      clearInterval(hungerTimer);}
     }
      
 
@@ -144,9 +143,8 @@ if (currentHappy >= 0) {
  
     
     //if reaches starving
-  //if (currentHappy === 0) {
-      //updateState();
-      //clearInterval(happyTimer);}
+  if (currentHappy === 0) {
+      clearInterval(happyTimer);}
     }
 
 
