@@ -25,7 +25,7 @@
 <div class="container">    
 <h1>tamagotchi demo</h1> 
     
-<img class="tama" id="currentTama" src="img/tama/babytchi.gif" width="16px" height="16px" />  
+<img class="tama" id="currentTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:visible" />  
     
     <div id="hunger"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
     
@@ -75,6 +75,7 @@ var displayState = 'Alive';
 function updateState() {
     displayState = 'Dead';
     document.getElementById('state').innerHTML = '<span class="label">STATE</span>' + '<br>' + displayState + '<br>';
+    document.getElementById('currentTama').style.visibility = "hidden";
 }  
 
 //update values when interacted with
@@ -85,6 +86,43 @@ function updateHunger() {
 function updateHappy() {
     document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}    
         
+//random call out ==============================================================================================
+  
+var slaying = true;
+//50% chance of hit (0 or 1 aka false or true)
+var callOut = Math.floor(Math.random() * 2)
+//sets to number between 1-5
+var disciplinePoints = Math.floor(Math.random()*5 + 1)
+var totalDiscipline = 0;
+
+function randomCallOut() {
+ while(slaying) {
+    //determining if hit
+    if (callOut) {
+        console.log('Call out!');
+
+        totalDiscipline += disciplinePoints;
+
+        //if discipline is greater than 4
+        if (totalDiscipline >= 10) {
+            console.log('Discipline is full!')
+            //end loop
+            slaying = false;
+            }
+        //if damage is not greater than 4
+            else {
+                callOut = Math.floor(Math.random() * 2)
+                }
+    }
+
+    else {
+        console.log("Didn't call out");
+        //end loop
+        slaying = false;
+        }
+ }  
+}        
+    
     
 //hunger ===================================================================================================
 var hungerTimer = 0;
@@ -95,6 +133,7 @@ var hungerTimer = setInterval(function happyCalc() {
 if (currentHunger >= 0) {
   currentHunger--;
     updateHunger();
+    randomCallOut();
     
     //if reaches 4
   if (currentHunger === 5) {
@@ -123,7 +162,7 @@ if (currentHunger >= 0) {
   }
     
     //if reaches starving
-  else if (currentHunger === 0 && currentHappy === 0) {
+  else (currentHunger === 0 && currentHappy === 0) {
       updateState();
       clearInterval(hungerTimer);}
     }
