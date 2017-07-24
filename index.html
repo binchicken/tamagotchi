@@ -42,10 +42,7 @@
     
 // starves when hunger goes from 5 to 0
 var currentHunger = 5;
-var isStarving = 0;
-// sad when happy goes from 5 to 0
 var currentHappy = 5;
-var isSad = 0;
 
 //start with 4 hearts    
 var displayHunger = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
@@ -88,39 +85,16 @@ function updateHappy() {
         
 //random call out ==============================================================================================
   
-var slaying = true;
-//50% chance of hit (0 or 1 aka false or true)
-var callOut = Math.floor(Math.random() * 2)
-//sets to number between 1-5
-var disciplinePoints = Math.floor(Math.random()*5 + 1)
+var undisciplined = true;
 var totalDiscipline = 0;
 
+//5% chance of calling out    
 function randomCallOut() {
- while(slaying) {
-    //determining if hit
-    if (callOut) {
-        console.log('Call out!');
-
-        totalDiscipline += disciplinePoints;
-
-        //if discipline is greater than 4
-        if (totalDiscipline >= 10) {
-            console.log('Discipline is full!')
-            //end loop
-            slaying = false;
-            }
-        //if damage is not greater than 4
-            else {
-                callOut = Math.floor(Math.random() * 2)
-                }
+var d = Math.random();
+if (d < 0.25) {
+    console.log('less than 25%');
     }
-
-    else {
-        console.log("Didn't call out");
-        //end loop
-        slaying = false;
-        }
- }  
+else {}
 }        
     
     
@@ -162,7 +136,7 @@ if (currentHunger >= 0) {
   }
     
     //if reaches starving
-  else (currentHunger === 0 && currentHappy === 0) {
+  else if (currentHunger === 0 && currentHappy === 0) {
       updateState();
       clearInterval(hungerTimer);}
     }
