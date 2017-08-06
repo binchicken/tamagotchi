@@ -72,9 +72,11 @@ var scold = document.getElementById('scold');
 function scoldAction() {
     if (currentDiscipline <= 9 && undisciplined === true) {
         currentDiscipline++;
-        undisciplined = false;
     }
-else {currentHappy--;}
+else {
+currentHappy--;
+updateHappy();
+    }
 }    
     
 feed.addEventListener('click', function () {
@@ -85,32 +87,39 @@ feed.addEventListener('click', function () {
     
 play.addEventListener('click', function () {
     currentHappy += 2;
+    updateHappy();
 }); 
     
 scold.addEventListener('click', function () {
     scoldAction();
     updateDiscipline();
+    undisciplined = false;
 });  
     
 //min & max values   
 function minHunger(){
- currentHunger = 0;
+    currentHunger = 0;
+    updateHunger();    
 }
 function maxHunger(){
- currentHunger = 5;
+    currentHunger = 5;
+    updateHunger(); 
 }
     
 
 function minHappy(){
- currentHappy = 0;
+    updateHappy();
+    currentHappy = 0;
 }    
 function maxHappy(){
- currentHappy = 5;
+    currentHappy = 5;
+    updateHappy();    
 } 
     
 
 function maxDiscipline(){
- currentDiscipline = 10;
+    currentDiscipline = 10;
+    updateDiscipline();
 }      
  
 //update state if alive/dead   
@@ -164,17 +173,18 @@ var hungerTimer = setInterval(function hungryCalc() {
 
 //if below min
 if (currentHunger < 0) {
+      displayHunger = zeroHearts;
       minHunger();
       console.log('min');
-  } else {}
-    
-if (currentHunger >= 0) {
+  } else {
+      
   currentHunger--;
     updateHunger();
     randomCallOut();
     
      //if above max
   if (currentHunger >= 6) {
+      displayHunger = fourHearts;
       maxHunger();
       console.log('max');
   }
@@ -205,9 +215,10 @@ if (currentHunger >= 0) {
   }    
     //if reaches starving
   else if (currentHunger <= 0 && currentHappy <= 0) {
+      displayHunger = zeroHearts;
       updateState();
       clearInterval(hungerTimer);}
-    }
+  }
     
 }, 3000);
     
@@ -218,18 +229,19 @@ var happyTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
 
-//if below min
+//if goes into negative, bring back to 0
   if (currentHappy < 0) {
+      displayHappy = zeroHearts;
       minHappy();
       console.log('min');
-  } else {}
-    
-if (currentHappy >= 0) {
+      clearInterval(happyTimer);
+  } else {
   currentHappy--;
   updateHappy();
     
      //if above max
   if (currentHappy >= 6) {
+      displayHappy = fourHearts;
       maxHappy();
       console.log('max');
   }
@@ -255,8 +267,10 @@ if (currentHappy >= 0) {
   }   
     //if reaches starving
   else if (currentHappy === 0) {
+      displayHappy = zeroHearts;
+      updateHappy();
       clearInterval(happyTimer);}
-    }
+  }
     
 }, 2800);
     
