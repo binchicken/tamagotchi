@@ -87,6 +87,15 @@ function updateHunger() {
     
 function updateHappy() {
     document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}    
+
+//max value for currentHunger & Happy    
+function maxHunger(){
+ currentHunger = 5;
+}
+    
+function maxHappy(){
+ currentHappy = 5;
+}    
         
     
 //random call out ==============================================================================================
@@ -101,12 +110,15 @@ if (d < 0.25) {
     console.log('less than 25%');
     }
 else {}
-}    
+}   
+    
+//experimental ==========================================================
+
     
 //hunger ===================================================================================================
 var hungerTimer = 0;
     
-var hungerTimer = setInterval(function happyCalc() {
+var hungerTimer = setInterval(function hungryCalc() {
 
 //happy value depletes from full (5) to sad  
 if (currentHunger >= 0) {
@@ -114,8 +126,13 @@ if (currentHunger >= 0) {
     updateHunger();
     randomCallOut();
     
+     //if above max
+  if (currentHunger >= 6) {
+      maxHunger();
+      console.log('max');
+  }
     //if reaches 4
-  if (currentHunger === 5) {
+  else if (currentHunger === 5) {
       displayHunger = fourHearts;
       updateHunger();
   }     
@@ -139,12 +156,6 @@ if (currentHunger >= 0) {
       displayHunger = zeroHearts;
       updateHunger();
   }    
-    //if above max
-  else if (currentHunger >= 6) {
-      currentHunger === 5;
-      console.log('max');
-  }
-    
     //if reaches starving
   else if (currentHunger <= 0 && currentHappy <= 0) {
       updateState();
@@ -162,9 +173,13 @@ var happyTimer = setInterval(function happyCalc() {
 if (currentHappy >= 0) {
   currentHappy--;
   updateHappy();
-  
+    
+       //if above max
+  if (currentHunger >= 6) {
+      maxHappy();
+  }
     //if reaches 3
-  if (currentHappy === 4) {
+  else if (currentHappy === 4) {
       displayHappy = threeHearts;
       updateHappy();
   }  
