@@ -4,6 +4,7 @@ body {
     background-color: #000;
     font-size: 14px;
     color: #fff;
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace
 }
 .container {
     width: 80vw;
@@ -61,8 +62,7 @@ button {
 #feed {
     margin-top: 4em;  
 }
-#play {
-    margin-top: 1em;
+#scold {
     margin-bottom: 3em;
 }
 
@@ -103,5 +103,8 @@ button {
     .tama {
     margin-top: 4em;
     margin-bottom: 6em;
-}
+    }
+    .action {
+    margin-bottom: 2em
+    }
 }

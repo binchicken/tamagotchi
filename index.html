@@ -31,22 +31,28 @@
     
     <div id="happy"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
 
+    <div id="discipline"><span class="label">DISCIPLINE</span><br>0</div><br>
+    
     <div id="state"><span class="label">STATE</span><br>Alive</div>
 
     <button id="feed" class="action">> Feed</button><br>    
-    <button id="play" class="action">> Play</button>    
+    <button id="play" class="action">> Play</button><br>    
+    <button id="scold" class="action">> Scold</button>    
     <p id="reset" class="action"><a href=".">> Reset</a></p>
 </div>
 
 <script>
 
-// representing hunger & happiness states ====================================================    
+// initial states ====================================================    
     
 //starves when hunger goes from 5 to 0
 var currentHunger = 5;
 var currentHappy = 5;
+    
+var undisciplined = false;
+var currentDiscipline = 0;    
 
-//start with 4 hearts    
+//starting value    
 var displayHunger = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
 var displayHappy = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
     
@@ -61,15 +67,51 @@ var zeroHearts = '<img src="img/heart-empty.svg" width="13px" height="13px" /><i
 // interaction functionality =================================================================    
 var feed = document.getElementById('feed');
 var play = document.getElementById('play');
+var scold = document.getElementById('scold');
+    
+function scoldAction() {
+    if (currentDiscipline <= 9 && undisciplined === true) {
+        currentDiscipline++;
+        undisciplined = false;
+    }
+else {currentHappy--;}
+}    
     
 feed.addEventListener('click', function () {
     currentHunger += 2;
     updateHunger();
     console.log('click');
 }); 
+    
 play.addEventListener('click', function () {
     currentHappy += 2;
-});     
+}); 
+    
+scold.addEventListener('click', function () {
+    scoldAction();
+    updateDiscipline();
+});  
+    
+//min & max values   
+function minHunger(){
+ currentHunger = 0;
+}
+function maxHunger(){
+ currentHunger = 5;
+}
+    
+
+function minHappy(){
+ currentHappy = 0;
+}    
+function maxHappy(){
+ currentHappy = 5;
+} 
+    
+
+function maxDiscipline(){
+ currentDiscipline = 10;
+}      
  
 //update state if alive/dead   
 var displayState = 'Alive';    
@@ -86,34 +128,32 @@ function updateHunger() {
     console.log('update');}
     
 function updateHappy() {
-    document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}    
+    document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}
 
-//max value for currentHunger & Happy    
-function maxHunger(){
- currentHunger = 5;
-}
-    
-function maxHappy(){
- currentHappy = 5;
-}    
+function updateDiscipline() {
+    document.getElementById('discipline').innerHTML = '<span class="label">DISCIPLINE</span>' + '<br>' + currentDiscipline + '<br>';}      
         
     
 //random call out ==============================================================================================
   
-var undisciplined = true;
-var totalDiscipline = 0;
 
 //5% chance of calling out    
 function randomCallOut() {
-var d = Math.random();
-if (d < 0.25) {
+var c = Math.random();
+if (c < 0.25) {
+    undisciplined = true;
     console.log('less than 25%');
     }
-else {}
+else {undisciplined = false;}
 }   
     
 //experimental ==========================================================
 
+//random 5% chance:
+    //- calls out (icon shows until interacted with)
+//when interacted with:
+    //- total discipline +1
+    //- icon disappears
     
 //hunger ===================================================================================================
 var hungerTimer = 0;
@@ -121,6 +161,13 @@ var hungerTimer = 0;
 var hungerTimer = setInterval(function hungryCalc() {
 
 //happy value depletes from full (5) to sad  
+
+//if below min
+if (currentHunger < 0) {
+      minHunger();
+      console.log('min');
+  } else {}
+    
 if (currentHunger >= 0) {
   currentHunger--;
     updateHunger();
@@ -170,13 +217,21 @@ var happyTimer = 0;
 var happyTimer = setInterval(function happyCalc() {
 
 //happy value depletes from full (5) to sad  
+
+//if below min
+  if (currentHappy < 0) {
+      minHappy();
+      console.log('min');
+  } else {}
+    
 if (currentHappy >= 0) {
   currentHappy--;
   updateHappy();
     
-       //if above max
-  if (currentHunger >= 6) {
+     //if above max
+  if (currentHappy >= 6) {
       maxHappy();
+      console.log('max');
   }
     //if reaches 3
   else if (currentHappy === 4) {
@@ -197,12 +252,7 @@ if (currentHappy >= 0) {
   else if (currentHappy === 1) {
       displayHappy = zeroHearts;
       updateHappy();
-  }
-    //if above max
-  else if (currentHappy >= 6) {
-      currentHappy === 5;
-      console.log('max');
-  }    
+  }   
     //if reaches starving
   else if (currentHappy === 0) {
       clearInterval(happyTimer);}
