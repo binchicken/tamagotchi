@@ -40,11 +40,11 @@ a {
 /* === actions ================================================ */
 
 button {
-     background:none!important;
+     background: none!important;
      outline: none;
-     color:inherit;
-     border:none; 
-     padding:0!important;
+     color: inherit;
+     border: none; 
+     padding: 0!important;
      font: inherit;
      cursor: pointer;
 }
