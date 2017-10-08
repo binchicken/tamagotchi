@@ -24,6 +24,8 @@
 <body>
 <div class="container">    
 <h1>tamagotchi demo</h1> 
+
+<img class="ui" id="attention" src="img/ui/attention.svg" width="22px" height="15px" style="visibility:hidden" /><br>   
     
 <img class="tama" id="currentTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:visible" />  
     
@@ -37,8 +39,11 @@
 
     <button id="feed" class="action">> Feed</button><br>    
     <button id="play" class="action">> Play</button><br>    
-    <button id="scold" class="action">> Scold</button>    
+    <button id="scold" class="action">> Scold</button> 
+    
     <p id="reset" class="action"><a href=".">> Reset</a></p>
+    
+    
 </div>
 
 <script>
@@ -72,25 +77,28 @@ var scold = document.getElementById('scold');
 function scoldAction() {
     if (currentDiscipline <= 9 && undisciplined === true) {
         currentDiscipline++;
+        document.getElementById('attention').style.visibility = "hidden";
+        console.log('scold success');
     }
 else {
 currentHappy--;
 updateHappy();
+console.log('scold fail');
     }
 }    
     
-feed.addEventListener('click', function () {
+feed.addEventListener('click', function() {
     currentHunger += 2;
     updateHunger();
     console.log('click');
 }); 
     
-play.addEventListener('click', function () {
+play.addEventListener('click', function() {
     currentHappy += 2;
     updateHappy();
 }); 
     
-scold.addEventListener('click', function () {
+scold.addEventListener('click', function() {
     scoldAction();
     updateDiscipline();
     undisciplined = false;
@@ -149,11 +157,12 @@ function updateDiscipline() {
 //5% chance of calling out    
 function randomCallOut() {
 var c = Math.random();
-if (c < 0.25) {
+if (c < 0.1) {
     undisciplined = true;
-    console.log('less than 25%');
+    console.log('less than 10%');
+    document.getElementById('attention').style.visibility = "visible";
     }
-else {undisciplined = false;}
+else {}
 }   
     
 //experimental ==========================================================
@@ -220,7 +229,7 @@ if (currentHunger < 0) {
       clearInterval(hungerTimer);}
   }
     
-}, 3000);
+}, 2500);
     
 //happy ===================================================================================================
 var happyTimer = 0;
@@ -272,7 +281,7 @@ var happyTimer = setInterval(function happyCalc() {
       clearInterval(happyTimer);}
   }
     
-}, 2800);
+}, 2300);
     
  
     
