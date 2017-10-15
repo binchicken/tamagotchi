@@ -69,7 +69,8 @@ var oneHeart = '<img src="img/heart-full.svg" width="13px" height="13px" /><img 
 var zeroHearts = '<img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" /><img src="img/heart-empty.svg" width="13px" height="13px" />'; 
  
     
-// interaction functionality =================================================================    
+// interaction functionality =================================================================   
+    
 var feed = document.getElementById('feed');
 var play = document.getElementById('play');
 var scold = document.getElementById('scold');
@@ -154,7 +155,7 @@ function updateDiscipline() {
 //random call out ==============================================================================================
   
 
-//5% chance of calling out    
+//10% chance of calling out    
 function randomCallOut() {
 var c = Math.random();
 if (c < 0.1) {
