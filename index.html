@@ -35,6 +35,8 @@
 
     <div id="discipline"><span class="label">DISCIPLINE</span><br>0</div><br>
     
+    <div id="age" style="visibility:visible"><span class="label">AGE</span><br>0</div><br>
+    
     <div id="state"><span class="label">STATE</span><br>Alive</div>
 
     <button id="feed" class="action">> Feed</button><br>    
@@ -50,12 +52,16 @@
 
 // initial states ====================================================    
     
-//starves when hunger goes from 5 to 0
-var currentHunger = 5;
+//dies when hunger + happy goes from 5 to 0
+var currentHunger = 5;   
 var currentHappy = 5;
-    
+        
+//doesn't require discipline if hasn't called out
 var undisciplined = false;
 var currentDiscipline = 0;    
+    
+//age counter  
+var currentAge = 0;     
 
 //starting value    
 var displayHunger = '<img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" />';
@@ -149,8 +155,30 @@ function updateHappy() {
     document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}
 
 function updateDiscipline() {
-    document.getElementById('discipline').innerHTML = '<span class="label">DISCIPLINE</span>' + '<br>' + currentDiscipline + '<br>';}      
+    document.getElementById('discipline').innerHTML = '<span class="label">DISCIPLINE</span>' + '<br>' + currentDiscipline + '<br>';}     
+    
+//update values for system    
+function updateAge() {
+    document.getElementById('age').innerHTML = '<span class="label">AGE</span>' + '<br>' + currentAge + '<br>';}        
         
+
+//age timer ==============================================================================================
+    
+    //bug: currentAge ++ being counted immediately
+    //bug: ageTimer stops dying when hunger + happy reach zero
+var ageTimer = 0;
+    
+var ageTimer = setInterval(function ageCalc() {  
+    
+    console.log('+age');    
+    currentAge++;
+    updateAge();
+    clearInterval(ageTimer);    
+    console.log('cleared');
+
+}, 9000);   
+    
+    
     
 //random call out ==============================================================================================
   
@@ -168,11 +196,7 @@ else {}
     
 //experimental ==========================================================
 
-//random 5% chance:
-    //- calls out (icon shows until interacted with)
-//when interacted with:
-    //- total discipline +1
-    //- icon disappears
+
     
 //hunger ===================================================================================================
 var hungerTimer = 0;
@@ -230,7 +254,7 @@ if (currentHunger < 0) {
       clearInterval(hungerTimer);}
   }
     
-}, 2500);
+}, 2800);
     
 //happy ===================================================================================================
 var happyTimer = 0;
@@ -282,7 +306,7 @@ var happyTimer = setInterval(function happyCalc() {
       clearInterval(happyTimer);}
   }
     
-}, 2300);
+}, 3000);
     
  
     
