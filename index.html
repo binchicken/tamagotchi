@@ -163,10 +163,39 @@ function updateAge() {
         
 
 //age timer ==============================================================================================
+
+    //replace with Date.prototype.getTime() ?
     
     //bug: currentAge ++ being counted immediately
     //bug: ageTimer stops dying when hunger + happy reach zero
-var ageTimer = 0;
+    
+/* 
+
+t0 = time at page load (creation of egg)
+t1 = t0 + 5000
+
+*/    
+
+
+    
+var t0 = performance.now();
+console.log("Time is " + (t0)) 
+    
+currentAge++;
+updateAge();
+var t1 = t0 + 5000;
+console.log("Time is " + (t1))  
+
+    
+    /*function checkAge() {
+    if {
+        (t1 - t0) = 
+    }
+    else {}    ;}  */     
+    
+    
+    
+/*var ageTimer = 0;
     
 var ageTimer = setInterval(function ageCalc() {  
     
@@ -176,8 +205,10 @@ var ageTimer = setInterval(function ageCalc() {
     clearInterval(ageTimer);    
     console.log('cleared');
 
-}, 9000);   
+}, 9000);   */
     
+    
+ 
     
     
 //random call out ==============================================================================================
