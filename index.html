@@ -131,7 +131,7 @@ function maxHappy(){
     updateHappy();    
 } 
     
-
+//currently unused (!)
 function maxDiscipline(){
     currentDiscipline = 10;
     updateDiscipline();
@@ -156,58 +156,31 @@ function updateHappy() {
 
 function updateDiscipline() {
     document.getElementById('discipline').innerHTML = '<span class="label">DISCIPLINE</span>' + '<br>' + currentDiscipline + '<br>';}     
-    
-//update values for system    
-function updateAge() {
-    document.getElementById('age').innerHTML = '<span class="label">AGE</span>' + '<br>' + currentAge + '<br>';}        
+           
         
 
 //age timer ==============================================================================================
-
-    //replace with Date.prototype.getTime() ?
     
-    //bug: currentAge ++ being counted immediately
-    //bug: ageTimer stops dying when hunger + happy reach zero
+   
+//remove if/else and duplicate for generation counter ?    
+var ageTimer = -1;
     
-/* 
-
-t0 = time at page load (creation of egg)
-t1 = t0 + 5000
-
-*/    
-
-
-    
-var t0 = performance.now();
-console.log("Time is " + (t0)) 
-    
-currentAge++;
-updateAge();
-var t1 = t0 + 5000;
-console.log("Time is " + (t1))  
-
-    
-    /*function checkAge() {
-    if {
-        (t1 - t0) = 
-    }
-    else {}    ;}  */     
-    
-    
-    
-/*var ageTimer = 0;
-    
-var ageTimer = setInterval(function ageCalc() {  
-    
+setInterval(function() {
+    if (currentHunger <= 0 && currentHappy <= 0) {}
+    else {
     console.log('+age');    
     currentAge++;
     updateAge();
     clearInterval(ageTimer);    
     console.log('cleared');
+    }
 
-}, 9000);   */
+}, 9000);    
+
     
-    
+//update values for system    
+function updateAge() {
+    document.getElementById('age').innerHTML = '<span class="label">AGE</span>' + '<br>' + currentAge + '<br>';}     
  
     
     
