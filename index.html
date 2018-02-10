@@ -29,13 +29,13 @@
     
 <img class="tama" id="eggTama" src="https://emojipedia-us.s3.amazonaws.com/thumbs/120/apple/118/egg_1f95a.png" width="16px" height="16px" style="visibility:visible" />  
     
-<img class="tama" id="currentTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:hidden" />  
+<img class="tama" id="babyTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:hidden" />  
     
-    <div id="hunger"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+    <div id="hunger" style="visibility:hidden"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
     
-    <div id="happy"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+    <div id="happy" style="visibility:hidden"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
 
-    <div id="discipline"><span class="label">DISCIPLINE</span><br>0</div><br>
+    <div id="discipline" style="visibility:hidden"><span class="label">DISCIPLINE</span><br>0</div><br>
     
     <div id="age" style="visibility:visible"><span class="label">AGE</span><br>0</div><br>
     
@@ -90,7 +90,11 @@ function scoldAction() {
         console.log('scold success');
     }
 else {
-currentHappy--;
+    //bug: scold still causing happiness to go over maxHappy
+    if (currentHappy > 0 && currentHappy <= 4) {
+    currentHappy--;
+        } else {}
+    
 updateHappy();
 console.log('scold fail');
     }
@@ -145,7 +149,7 @@ var displayState = 'Alive';
 function updateState() {
     displayState = 'Dead';
     document.getElementById('state').innerHTML = '<span class="label">STATE</span>' + '<br>' + displayState + '<br>';
-    document.getElementById('currentTama').style.visibility = "hidden";
+    document.getElementById('babyTama').style.visibility = "hidden";
 }  
 
 //update values when interacted with
@@ -173,7 +177,7 @@ setInterval(function() {
     console.log('+age');    
     currentAge++;
     updateAge(); 
-    changeTama();
+    lifeStage();
     clearInterval(ageTimer);    
     console.log('cleared');
     }
@@ -184,29 +188,52 @@ setInterval(function() {
 //update values for system    
 function updateAge() {
     document.getElementById('age').innerHTML = '<span class="label">AGE</span>' + '<br>' + currentAge + '<br>';}     
+    
+      
+//experimental ==========================================================
 
-//evolve tama based on age    
+
+//evolve tama based on age        
+   
+var eggState = true;
+    
+function eggTama() {
+    document.getElementById('eggTama').style.visibility = "hidden";
+    document.getElementById('babyTama').style.visibility = "visible";
+    eggState = true; }
+    
 function babyTama() {
     document.getElementById('eggTama').style.visibility = "hidden";
-    document.getElementById('currentTama').style.visibility = "visible";}
+    document.getElementById('babyTama').style.visibility = "visible";
+    document.getElementById('hunger').style.visibility = "visible";
+    document.getElementById('happy').style.visibility = "visible";
+    document.getElementById('discipline').style.visibility = "visible";
+    eggState = false;
+    console.log('eggstate false');
+}
     
-function changeTama() {
-    if (currentAge >= 1) {
-      console.log('evolve');
+function lifeStage() {
+    if (currentAge === 0) {
+      console.log('egg');
+      //eggTama();  
+    }
+    else if (currentAge === 1) {
+      console.log('evolve to baby');
       babyTama();  
     }
-    else {}
-}
-      
+    /*else if {}
+    else if {}*/
+}  
+
     
     
 //random call out ==============================================================================================
   
 
-//10% chance of calling out    
+//5% chance of calling out    
 function randomCallOut() {
 var c = Math.random();
-if (c < 0.1) {
+if (c < 0.05) {
     undisciplined = true;
     console.log('less than 10%');
     document.getElementById('attention').style.visibility = "visible";
@@ -214,14 +241,13 @@ if (c < 0.1) {
 else {}
 }   
     
-//experimental ==========================================================
-
-
+        
     
 //hunger ===================================================================================================
-var hungerTimer = 0;
+var hungerTimer = 0;   
     
 var hungerTimer = setInterval(function hungryCalc() {
+    if (eggState == false) {
 
 //happy value depletes from full (5) to sad  
 
@@ -272,7 +298,7 @@ if (currentHunger < 0) {
       displayHunger = zeroHearts;
       updateState();
       clearInterval(hungerTimer);}
-  }
+  } } else {}
     
 }, 2800);
     
@@ -280,6 +306,7 @@ if (currentHunger < 0) {
 var happyTimer = 0;
     
 var happyTimer = setInterval(function happyCalc() {
+    if (eggState == false) {
 
 //happy value depletes from full (5) to sad  
 
@@ -324,7 +351,7 @@ var happyTimer = setInterval(function happyCalc() {
       displayHappy = zeroHearts;
       updateHappy();
       clearInterval(happyTimer);}
-  }
+  } } else {}
     
 }, 3000);
     
