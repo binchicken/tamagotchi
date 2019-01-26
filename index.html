@@ -40,32 +40,40 @@
 </head>
 
 <body>
-<div class="container">    
-<h1>tamagotchi demo</h1> 
+<div class="container">
+    <h1>tamagotchi demo</h1>
 
-<img class="ui" id="attention" src="img/ui/attention.svg" width="22px" height="15px" style="visibility:hidden" /><br>   
-    
-<img class="tama" id="eggTama" src="https://emojipedia-us.s3.amazonaws.com/thumbs/120/apple/118/egg_1f95a.png" width="16px" height="16px" style="visibility:visible" />  
-    
-<img class="tama" id="babyTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:hidden" />  
-    
-    <div id="hunger" style="visibility:hidden"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
-    
-    <div id="happy" style="visibility:hidden"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+    <img class="ui" id="attention" src="img/ui/attention.svg" width="22px" height="15px" style="visibility:hidden" /><br>
+
+    <img class="tama" id="eggTama" src="https://emojipedia-us.s3.amazonaws.com/thumbs/120/apple/118/egg_1f95a.png"
+        width="16px" height="16px" style="visibility:visible" />
+
+    <img class="tama" id="babyTama" src="img/tama/babytchi.gif" width="32px" height="16px" style="visibility:hidden" />
+
+    <div id="hunger" style="visibility:hidden"></div>
+    <div id="happy" style="visibility:hidden"></div>
+
+    <!--<div id="hunger" style="visibility:hidden"><span class="label">HUNGER</span><br><img src="img/heart-full.svg" width="13px"
+            height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg"
+            width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>
+
+    <div id="happy" style="visibility:hidden"><span class="label">HAPPY</span><br><img src="img/heart-full.svg" width="13px"
+            height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><img src="img/heart-full.svg"
+            width="13px" height="13px" /><img src="img/heart-full.svg" width="13px" height="13px" /><br></div>-->
 
     <div id="discipline" style="visibility:hidden"><span class="label">DISCIPLINE</span><br>0</div><br>
-    
+
     <div id="age" style="visibility:visible"><span class="label">AGE</span><br>0</div><br>
-    
+
     <div id="state"><span class="label">STATE</span><br>Alive</div>
 
-    <button id="feed" class="action">> Feed</button><br>    
-    <button id="play" class="action">> Play</button><br>    
-    <button id="scold" class="action">> Scold</button> 
-    
+    <button id="feed" class="action">> Feed</button><br>
+    <button id="play" class="action">> Play</button><br>
+    <button id="scold" class="action">> Scold</button>
+
     <p id="reset" class="action"><a href=".">> Reset</a></p>
-    
-    
+
+
 </div>
 
 <script>
@@ -172,13 +180,24 @@ function updateState() {
     document.getElementById('babyTama').style.visibility = "hidden";
 }  
 
-//update values when interacted with
-function updateHunger() {
-    document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
-    console.log('update');}
+//update values when interacted with - TESTING
+    function updateHunger() {
+        document.getElementById('hunger').innerHTML = getProgress(3, 5, '🌝', '🌚');
+        console.log('update');
+    }
+
+        function updateHappy() {
+            document.getElementById('happy').innerHTML = getProgress(1, 5, '❤️', '🖤');
+        }
+
+
+
+//function updateHunger() {
+    //document.getElementById('hunger').innerHTML = '<span class="label">HUNGER</span>' + '<br>' + displayHunger + '<br>';
+    //console.log('update');}
     
-function updateHappy() {
-    document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}
+//function updateHappy() {
+    //document.getElementById('happy').innerHTML = '<span class="label">HAPPY</span>' + '<br>' + displayHappy + '<br>';}
 
 function updateDiscipline() {
     document.getElementById('discipline').innerHTML = '<span class="label">DISCIPLINE</span>' + '<br>' + currentDiscipline + '<br>';}     

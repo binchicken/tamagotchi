@@ -1,0 +1,80 @@
+<!--
+
+
+@@@@@@@@@@    @@@@@@   @@@@@@@       @@@@@@    @@@@@@    @@@@@@@  @@@  @@@
+@@@@@@@@@@@  @@@@@@@@  @@@@@@@@     @@@@@@@@  @@@@@@@   @@@@@@@@  @@@  @@@
+@@! @@! @@!  @@!  @@@  @@!  @@@     @@!  @@@  !@@       !@@       @@!  @@!
+!@! !@! !@!  !@!  @!@  !@!  @!@     !@!  @!@  !@!       !@!       !@!  !@!
+@!! !!@ @!@  @!@!@!@!  @!@  !@!     @!@!@!@!  !!@@!!    !@!       !!@  !!@
+!@!   ! !@!  !!!@!!!!  !@!  !!!     !!!@!!!!   !!@!!!   !!!       !!!  !!!
+!!:     !!:  !!:  !!!  !!:  !!!     !!:  !!!       !:!  :!!       !!:  !!:
+:!:     :!:  :!:  !:!  :!:  !:!     :!:  !:!      !:!   :!:       :!:  :!:
+:::     ::   ::   :::   :::: ::     ::   :::  :::: ::    ::: :::   ::   ::
+ :      :     :   : :  :: :  :       :   : :  :: : :     :: :: :  :    :
+
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Tamagotchi</title>
+  <meta name="description" content="Tamagotchi">
+  <meta name="viewport" content="width=device-width, initial-scale=0.75">    
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+    
+</head>
+
+<body>
+<div class="container">
+    <h1>tamagotchi demo</h1>
+
+    <div id="hunger" style=""></div>
+    <div id="happy" style=""></div>
+
+
+</div>
+
+<script>
+
+    // get current hunger & happy status ====================================================================
+
+
+    
+    // define starting stats + heart graphics
+    function getStatus(current, max, fill, empty) {
+        var status = '';
+
+        // for conditions where hungy & happy are less than max
+        for (var i = 0; i < max; i++) {
+            var type = i < current ? fill : empty;
+
+            status += type;
+        }
+
+        return status;
+    }
+
+        document.getElementById('hunger').innerHTML = getStatus(1, 4, '<img src="img/heart-full.svg" width="13px" height="13px" />', '<img src="img/heart-empty.svg" width="13px" height="13px" />');
+        document.getElementById('happy').innerHTML = getStatus(2, 4, '<img src="img/heart-full.svg" width="13px" height="13px" />', '<img src="img/heart-empty.svg" width="13px" height="13px" />');
+
+
+
+</script 
+    
+</body>
+</html>
