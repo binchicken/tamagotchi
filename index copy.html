@@ -54,13 +54,13 @@
     // get current hunger & happy status ====================================================================
 
 
-    
+
     // define starting stats + heart graphics
     function getStatus(current, max, fill, empty) {
         var status = '';
 
-        // for conditions where hungy & happy are less than max
-        for (var i = 0; i < max; i++) {
+        // starting at 0, increment 1
+        while (var i = 0; i < max; i++) {
             var type = i < current ? fill : empty;
 
             status += type;
