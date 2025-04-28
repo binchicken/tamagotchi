@@ -1,6 +1,8 @@
 # tamagotchi
 tamagotchi project ✧
 
+now live - tamagotchi.samlloyd.com.au
+
 ### v1.2
 
 - Randomly calls out, records that has called out
